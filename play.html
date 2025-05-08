@@ -21,6 +21,100 @@
           <i class="fa fa-bars"></i>
         </a>
       </div>
+
+      <main>
+        <h1>How to Play Chess</h1>
+    
+        <h2>Setup</h2>
+        <div id="chessboard"></div>
+        <p>Chess is played on an 8x8 board. Each player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 bishops, 2 knights, and 8 pawns.</p>
+    
+        <h2>Objective</h2>
+        <p>The goal is to checkmate your opponent's king — putting it in a position where it cannot escape capture.</p>
+    <img src="https://www.australiachess.com/web/images/setup.gif">
+        <h2>How the Pieces Move</h2>
+        <ul>
+          <li><strong>Pawn:</strong> Moves forward one square, captures diagonally.</li>
+          <li><strong>Rook:</strong> Moves in straight lines — horizontally or vertically.</li>
+          <li><strong>Knight:</strong> Moves in an L-shape (two squares in one direction, one in a perpendicular direction).</li>
+          <li><strong>Bishop:</strong> Moves diagonally.</li>
+          <li><strong>Queen:</strong> Moves any number of squares in any direction.</li>
+          <li><strong>King:</strong> Moves one square in any direction.</li>
+        </ul>
+
+        <h2>Piece Point System</h2>
+        <img src="https://i.shgcdn.com/e9c8869e-03bc-4dc2-b8ae-65991b8e3581/-/format/auto/-/preview/3000x3000/-/quality/lighter/-/resize/1200x/" height="150">
+<p>Each chess piece is assigned a point value to help evaluate trades and overall material on the board. These values are not official, but widely used by players and instructors:</p>
+<ul>
+  <li><strong>Pawn:</strong> 1 point</li>
+  <li><strong>Knight:</strong> 3 points</li>
+  <li><strong>Bishop:</strong> 3 points</li>
+  <li><strong>Rook:</strong> 5 points</li>
+  <li><strong>Queen:</strong> 9 points</li>
+  <li><strong>King:</strong> ∞ (invaluable — losing the king means losing the game)</li>
+</ul>
+<p>This system helps players assess the value of exchanges. For example, trading a bishop (3 points) for a rook (5 points) is generally favorable.</p>
+    
+        <h2>Special Rules</h2>
+        <ul>
+          <li><strong>Castling:</strong> A move involving the king and a rook.</li>
+          <li><strong>En Passant:</strong> A special pawn capture.</li>
+          <li><strong>Promotion:</strong> When a pawn reaches the far end, it can be promoted to another piece (usually a queen).</li>
+        </ul>
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Ajedrez_captura_al_paso_del_peon.png">
+        <p>The above image is a demonstration of En Passant</p>
+        <h2>Winning the Game</h2>
+        <p>You win by checkmating your opponent. Games can also end in draws.</p>
+        <br>
+        <img src="https://chessmood.sfo3.cdn.digitaloceanspaces.com/chessmood/images/articles/837/david-and-goliath-matewebp_65151df09ade8.webp" height="200">
+      </main>
+
+
+    </head>
+    <body>
+    
+      
+      
+    
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const board = document.getElementById('chessboard');
+
+    const pieces = {
+      white: { R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙' },
+      black: { R: '♜', N: '♞', B: '♝', Q: '♛', K: '♚', P: '♟' }
+    };
+
+    const layout = [
+      ['bR','bN','bB','bQ','bK','bB','bN','bR'],
+      ['bP','bP','bP','bP','bP','bP','bP','bP'],
+      ['','','','','','','',''],
+      ['','','','','','','',''],
+      ['','','','','','','',''],
+      ['','','','','','','',''],
+      ['wP','wP','wP','wP','wP','wP','wP','wP'],
+      ['wR','wN','wB','wQ','wK','wB','wN','wR']
+    ];
+
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        square.classList.add((row + col) % 2 === 0 ? 'light' : 'dark');
+
+        const piece = layout[row][col];
+        if (piece) {
+          const color = piece[0] === 'w' ? 'white' : 'black';
+          const type = piece[1];
+          square.textContent = pieces[color][type];
+        }
+
+        board.appendChild(square);
+      }
+    }
+  });
+     </script>
     
 </body>
 </html>
